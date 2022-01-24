@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{ 
+    //RECUPERAMOS EL JSON QUE ESTA EN SESSION
+    List<Persona> personas = null;
+    if (Context.Session.GetString("PERSONAS") != null)
+    {
+        string data = Context.Session.GetString("PERSONAS");
+        personas =
+            HelperSession.DeserializeObject<List<Persona>>(data);
+    }
+}
+
+<div class="text-center">
+    @if (Context.Session.GetString("PERSONAS") != null)
+    {
+        <h1 style="color:red">
+            Personas almacenadas en Session: @personas.Count()
+        </h1>
+    }
+    @if (Context.Session.GetString("hora") != null)
+            {
+        <h1 style="color:blue">
+            @Context.Session.GetString("hora")
+        </h1>
+            }
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
