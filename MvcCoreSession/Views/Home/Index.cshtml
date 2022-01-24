@@ -3,13 +3,10 @@
 }
 
 @{ 
-    //RECUPERAMOS EL JSON QUE ESTA EN SESSION
     List<Persona> personas = null;
     if (Context.Session.GetString("PERSONAS") != null)
     {
-        string data = Context.Session.GetString("PERSONAS");
-        personas =
-            HelperSession.DeserializeObject<List<Persona>>(data);
+        personas = Context.Session.GetObject<List<Persona>>("PERSONAS");
     }
 }
 
