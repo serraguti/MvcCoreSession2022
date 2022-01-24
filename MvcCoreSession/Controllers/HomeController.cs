@@ -41,8 +41,8 @@ namespace MvcCoreSession.Controllers
                 //EXTRAEMOS LA INFORMACION DE STRING JSON DE SESSION
                 string data = HttpContext.Session.GetString("PERSONA");
                 //CONVERTIMOS EL JSON A OBJETO
-                Persona persona = (Persona)
-                    HelperSession.DeserializeObject(data, typeof(Persona));
+                Persona persona = 
+                    HelperSession.DeserializeObject<Persona>(data);
 
                 ViewData["usuario"] = persona.Nombre + ", Edad: " + persona.Edad;
                 ViewData["hora"] = persona.Hora;
@@ -78,8 +78,8 @@ namespace MvcCoreSession.Controllers
             {
                 string data =
                     HttpContext.Session.GetString("PERSONAS");
-                List<Persona> personas = (List<Persona>)
-                    HelperSession.DeserializeObject(data, typeof(List<Persona>));
+                List<Persona> personas = 
+                    HelperSession.DeserializeObject<List<Persona>>(data);
                 return View(personas);
             }
             return View();

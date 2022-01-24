@@ -44,12 +44,9 @@ namespace MvcCoreSession.Helpers
 
         //METODO QUE RECIBIRA EL JSON Y DEVOLVEMOS EL OBJETO
         //QUE LO REPRESENTA DESERIALIZADO
-        public static Object DeserializeObject
-            (string data, Type type)
+        public static T DeserializeObject<T>(string data)
         {
-            Object objeto =
-                JsonConvert.DeserializeObject(data, type);
-            return objeto;
+            return JsonConvert.DeserializeObject<T>(data);
         }
     }
 }
